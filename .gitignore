@@ -1,0 +1,28 @@
+node_modules/
+*/node_modules/
+
+# Local database files
+server/data/
+*.wt
+diagnostic.data/
+mongod.lock
+
+# Build output
+dist/
+client/dist/
+
+# Environment variables
+.env
+*.env
+!.env.example
+!client/.env.example
+!server/.env.example
+
+# Logs
+*.log
+
+# OS & Editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
