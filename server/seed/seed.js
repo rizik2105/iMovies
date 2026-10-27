@@ -32,7 +32,7 @@ const seedData = async (isStandalone = true) => {
     });
 
     const demoUser = await User.create({
-      name: 'Parv Khandelwal',
+      name: 'Cinema Guest',
       email: 'user@imovies.com',
       password: 'User@12345',
       role: 'user',
