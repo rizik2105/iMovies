@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
-import { Film, Lock, Mail, AlertCircle, Shield, User, ArrowRight, Zap, Eye, EyeOff } from 'lucide-react';
+import { Film, Lock, Mail, AlertCircle, ArrowRight, Eye, EyeOff } from 'lucide-react';
 
 const Login = () => {
   const [email, setEmail] = useState('');
@@ -30,19 +30,6 @@ const Login = () => {
     }
   };
 
-  const handleQuickLogin = (demoEmail, demoPassword) => {
-    setEmail(demoEmail);
-    setPassword(demoPassword);
-    setLoading(true);
-    setError('');
-    login(demoEmail, demoPassword)
-      .then(() => navigate(redirectPath, { replace: true }))
-      .catch((err) => {
-        setError(err.response?.data?.message || 'Quick login failed. Make sure database is running.');
-        setLoading(false);
-      });
-  };
-
   return (
     <div className="login-page py-5 my-auto d-flex align-items-center">
       <div className="container" style={{ maxWidth: 460 }}>
@@ -62,47 +49,6 @@ const Login = () => {
             <p className="text-secondary small">
               Sign in to reserve cinema seats and view your tickets.
             </p>
-          </div>
-
-          {/* Quick Demo Access at Top for instant convenience on laptop */}
-          <div className="p-3 rounded-4 bg-black bg-opacity-40 border border-white border-opacity-10 mb-4">
-            <div className="d-flex align-items-center justify-content-between mb-2">
-              <span
-                className="text-secondary small fw-bold text-uppercase d-flex align-items-center gap-1"
-                style={{ fontSize: '0.72rem' }}
-              >
-                <Zap size={13} color="var(--cinema-cyan)" /> 1-Click Demo Logins
-              </span>
-              <span className="badge bg-primary bg-opacity-20 text-primary" style={{ fontSize: '0.65rem' }}>
-                Instant Access
-              </span>
-            </div>
-            <div className="row g-2">
-              <div className="col-6">
-                <button
-                  type="button"
-                  onClick={() => handleQuickLogin('user@imovies.com', 'User@12345')}
-                  disabled={loading}
-                  className="btn btn-cinema-outline btn-sm w-100 py-2 d-flex align-items-center justify-content-center gap-2"
-                  style={{ fontSize: '0.82rem' }}
-                >
-                  <User size={14} color="var(--cinema-cyan)" />
-                  <span>Customer</span>
-                </button>
-              </div>
-              <div className="col-6">
-                <button
-                  type="button"
-                  onClick={() => handleQuickLogin('admin@imovies.com', 'Admin@12345')}
-                  disabled={loading}
-                  className="btn btn-cinema-outline btn-sm w-100 py-2 d-flex align-items-center justify-content-center gap-2"
-                  style={{ fontSize: '0.82rem' }}
-                >
-                  <Shield size={14} color="var(--cinema-blue)" />
-                  <span>Admin</span>
-                </button>
-              </div>
-            </div>
           </div>
 
           {error && (
